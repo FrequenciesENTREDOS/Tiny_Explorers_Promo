@@ -1684,7 +1684,148 @@ a {
     0 10px 25px
     rgba(55,42,73,.08);
 }
+/* =========================================================
+   REAL PARENT CONVERSATIONS
+   ========================================================= */
 
+.parent-conversation-grid {
+  max-width:1100px;
+  margin:42px auto 0;
+
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.parent-conversation-card {
+  position:relative;
+  overflow:hidden;
+
+  min-height:285px;
+
+  display:flex;
+  flex-direction:column;
+
+  padding:31px;
+
+  border-radius:30px;
+
+  border:1px solid rgba(255,255,255,.95);
+
+  box-shadow:
+    0 14px 34px rgba(55,42,73,.11);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.parent-conversation-card:nth-child(1) {
+  background:linear-gradient(145deg,#fff3bd,#fffdf4);
+}
+
+.parent-conversation-card:nth-child(2) {
+  background:linear-gradient(145deg,#dff3e4,#fafffb);
+}
+
+.parent-conversation-card:nth-child(3) {
+  background:linear-gradient(145deg,#dff2ff,#fbfdff);
+}
+
+.parent-conversation-card:nth-child(4) {
+  background:linear-gradient(145deg,#f9dfeb,#fffafd);
+}
+
+.parent-conversation-card:hover {
+  transform:translateY(-5px);
+
+  box-shadow:
+    0 21px 43px rgba(55,42,73,.16);
+}
+
+.parent-topic {
+  display:inline-block;
+  align-self:flex-start;
+
+  margin-bottom:15px;
+
+  padding:7px 11px;
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,.72);
+
+  color:var(--purple);
+
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.11em;
+}
+
+.parent-conversation-card h3 {
+  margin:0 0 13px;
+
+  color:var(--purple-dark);
+
+  font-size:1.55rem;
+  line-height:1.15;
+}
+
+.parent-conversation-card p {
+  margin:0 0 24px;
+
+  color:var(--soft);
+
+  line-height:1.65;
+}
+
+.parent-conversation-card a {
+  margin-top:auto;
+
+  align-self:flex-start;
+
+  color:var(--purple);
+
+  font-weight:900;
+
+  text-decoration:none;
+
+  border-bottom:
+    2px solid rgba(101,80,166,.20);
+
+  transition:.18s ease;
+}
+
+.parent-conversation-card a:hover {
+  transform:translateX(3px);
+
+  border-bottom-color:var(--purple);
+}
+
+.parent-source-note {
+  max-width:760px;
+
+  margin:27px auto 0;
+
+  text-align:center;
+
+  color:#8a8292;
+
+  font-size:.78rem;
+  line-height:1.55;
+}
+
+@media(max-width:750px) {
+
+  .parent-conversation-grid {
+    grid-template-columns:1fr;
+  }
+
+  .parent-conversation-card {
+    min-height:0;
+  }
+
+}
 /* =========================================================
    FOOTER
    ========================================================= */
@@ -2897,7 +3038,7 @@ simply another game to finish.
 <header class="section-heading">
 
 <p class="kicker">
-Real conversations
+REAL CONVERSATIONS
 </p>
 
 <h2>
@@ -2905,20 +3046,132 @@ What Parents Are Asking For
 </h2>
 
 <p class="parents-copy">
-The questions behind Tiny Explorers are already
-being asked by parents: how children spend their
-screen time, what they encounter there, what they
-learn, and whether digital play can become
-something more meaningful.
+Tiny Explorers wasn't created around the idea that children simply need more screen time.
+Parents are already asking for digital experiences that are engaging, thoughtful,
+age-appropriate, and genuinely enjoyable for their children.
 </p>
 
 </header>
 
-<div class="parent-note">
-The parent conversations collected for this
-section will be shown in their original context
-with links to the original discussions.
+
+<div class="parent-conversation-grid">
+
+
+<article class="parent-conversation-card">
+
+<span class="parent-topic">
+QUALITY SCREEN TIME
+</span>
+
+<h3>
+“Anything else out there?”
+</h3>
+
+<p>
+A parent of a 4-year-old was already using educational apps but wanted more
+high-quality options after becoming concerned about some of the content their
+child encountered elsewhere.
+</p>
+
+<a
+  href="https://www.reddit.com/r/Preschoolers/comments/1exi1oa/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+View original discussion →
+</a>
+
+</article>
+
+
+<article class="parent-conversation-card">
+
+<span class="parent-topic">
+PLAY WITHOUT THE EXTRAS
+</span>
+
+<h3>
+No ads. No microtransactions.
+</h3>
+
+<p>
+One parent looking for games for a long trip wanted something their child could
+enjoy independently—without ads, microtransactions, or links pulling them away
+from the experience.
+</p>
+
+<a
+  href="https://www.reddit.com/r/toddlers/comments/hofsr7/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+View original discussion →
+</a>
+
+</article>
+
+
+<article class="parent-conversation-card">
+
+<span class="parent-topic">
+CALMER DIGITAL PLAY
+</span>
+
+<h3>
+Entertaining without taking over.
+</h3>
+
+<p>
+A parent of a 4-year-old asked for something entertaining, non-detrimental,
+non-overstimulating, and non-addictive—something their child could enjoy for
+a little while without turning it into the center of the day.
+</p>
+
+<a
+  href="https://www.reddit.com/r/Preschoolers/comments/1bdy31x/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+View original discussion →
+</a>
+
+</article>
+
+
+<article class="parent-conversation-card">
+
+<span class="parent-topic">
+LIFE BEYOND THE SCREEN
+</span>
+
+<h3>
+What happens when the screen turns off?
+</h3>
+
+<p>
+Another family described intentionally reducing their 4½-year-old's screen time
+and seeing space return for music, activities, curiosity, and other ways of
+spending the day.
+</p>
+
+<a
+  href="https://www.reddit.com/r/Preschoolers/comments/1vllb0a/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+View original discussion →
+</a>
+
+</article>
+
+
 </div>
+
+
+<p class="parent-source-note">
+These are independent public discussions about children's digital play.
+They are not reviews, testimonials, or endorsements of Tiny Explorers.
+</p>
 
 </section>
 
