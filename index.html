@@ -4,39 +4,47 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tiny Explorers</title>
+<title>Tiny Explorers | A Living World for Little Explorers</title>
 
-<meta name="description" content="Tiny Explorers — a living world where play, discovery, kindness and everyday life become an adventure.">
+<meta name="description"
+content="Tiny Explorers is a play-first living world where children explore, pretend, discover, help, create and grow.">
 
 <style>
-
 /* =========================================================
    TINY EXPLORERS — PROMOTIONAL SITE
    ========================================================= */
 
 :root {
-  --purple:#6651a7;
-  --purple-dark:#443477;
-  --pink:#f38fb7;
-  --coral:#f69a87;
+  --purple:#6550a6;
+  --purple-dark:#443574;
+  --purple-soft:#ded6ff;
+
+  --pink:#f38eb7;
+  --pink-soft:#ffdce9;
+
+  --coral:#f59a86;
   --yellow:#ffd86b;
-  --green:#8fd49a;
-  --aqua:#87d9df;
-  --blue:#87cef0;
+  --yellow-soft:#fff0b1;
+
+  --green:#91d69d;
+  --green-soft:#d9f2dc;
+
+  --aqua:#8edce1;
+  --blue:#8bcff0;
+  --blue-soft:#d9f2ff;
 
   --cream:#fffaf0;
-  --cream2:#fff3d9;
+  --cream-deep:#fff1d1;
 
-  --ink:#3e3553;
-  --soft:#70677e;
-
-  --white:#fff;
+  --ink:#403652;
+  --soft:#71697d;
+  --white:#ffffff;
 
   --shadow:
-    0 20px 50px rgba(70,52,105,.17);
+    0 20px 50px rgba(70,52,105,.16);
 
-  --deep-shadow:
-    0 28px 70px rgba(63,45,94,.23);
+  --shadow-deep:
+    0 30px 70px rgba(63,45,94,.22);
 
   --max:1380px;
 }
@@ -63,27 +71,31 @@ body {
   color:var(--ink);
 
   background:
-    radial-gradient(
-      circle at 8% 5%,
-      rgba(255,255,255,.9),
-      transparent 22%
-    ),
-    radial-gradient(
-      circle at 95% 25%,
-      rgba(255,218,235,.45),
-      transparent 25%
-    ),
+    radial-gradient(circle at 8% 3%,
+      rgba(255,255,255,.94),
+      transparent 22%),
+
+    radial-gradient(circle at 95% 27%,
+      rgba(255,216,234,.50),
+      transparent 26%),
+
     linear-gradient(
       180deg,
-      #8bd9f2 0%,
-      #dff7fb 30%,
-      #fff6df 67%,
+      #8edcf4 0%,
+      #e1f7fb 28%,
+      #fff6df 66%,
       #fffdf8 100%
     );
 }
 
-button {
+button,
+input,
+textarea {
   font:inherit;
+}
+
+button {
+  -webkit-tap-highlight-color:transparent;
 }
 
 img,
@@ -92,40 +104,38 @@ video {
   max-width:100%;
 }
 
-button,
 a {
-  -webkit-tap-highlight-color:transparent;
+  color:inherit;
 }
 
 /* =========================================================
-   BACKGROUND WORLD
+   BACKGROUND
    ========================================================= */
 
 .sky-world {
   position:fixed;
   inset:0;
-  z-index:-10;
+  z-index:-20;
   overflow:hidden;
   pointer-events:none;
 }
 
-.sun-glow {
+.sun {
   position:absolute;
+  width:520px;
+  height:520px;
 
-  width:500px;
-  height:500px;
-
-  top:-250px;
   left:50%;
+  top:-300px;
 
-  transform:translateX(-50%);
+  translate:-50% 0;
 
   border-radius:50%;
 
   background:
     radial-gradient(
       circle,
-      rgba(255,244,177,.8),
+      rgba(255,244,177,.9),
       rgba(255,244,177,0) 68%
     );
 }
@@ -133,65 +143,57 @@ a {
 .cloud {
   position:absolute;
 
-  width:170px;
+  width:175px;
   height:48px;
 
   border-radius:999px;
 
   background:
-    rgba(255,255,255,.48);
+    rgba(255,255,255,.45);
 
   animation:
-    cloudMove 38s linear infinite;
+    drift 42s linear infinite;
 }
 
 .cloud:before,
 .cloud:after {
   content:"";
-
   position:absolute;
-
   border-radius:50%;
-
   background:inherit;
 }
 
 .cloud:before {
-  width:75px;
-  height:75px;
-
+  width:76px;
+  height:76px;
   left:30px;
-  top:-30px;
+  top:-32px;
 }
 
 .cloud:after {
-  width:95px;
-  height:95px;
-
-  right:22px;
-  top:-46px;
+  width:96px;
+  height:96px;
+  right:20px;
+  top:-47px;
 }
 
-.cloud1 {
-  top:15%;
-  left:-220px;
+.cloud.one {
+  top:14%;
+  left:-250px;
 }
 
-.cloud2 {
-  top:52%;
-  left:-300px;
-
-  opacity:.45;
-
-  animation-duration:52s;
-  animation-delay:-19s;
-
-  scale:.72;
+.cloud.two {
+  top:49%;
+  left:-350px;
+  opacity:.42;
+  scale:.75;
+  animation-duration:56s;
+  animation-delay:-18s;
 }
 
-@keyframes cloudMove {
+@keyframes drift {
   to {
-    translate:calc(100vw + 520px) 0;
+    translate:calc(100vw + 650px) 0;
   }
 }
 
@@ -201,34 +203,31 @@ a {
 
 .site-header {
   position:sticky;
-
   top:0;
-
   z-index:1000;
 
-  padding:16px 22px 0;
+  padding:15px 20px 0;
 }
 
 .nav {
-  width:min(var(--max), calc(100% - 10px));
-
+  width:min(var(--max), calc(100% - 8px));
   margin:auto;
 
   display:flex;
   align-items:center;
   justify-content:space-between;
 
-  gap:20px;
+  gap:18px;
 
-  padding:11px 15px;
+  padding:10px 14px;
 
   border-radius:999px;
 
   background:
-    rgba(255,250,238,.88);
+    rgba(255,250,238,.90);
 
   border:
-    1px solid rgba(255,255,255,.9);
+    1px solid rgba(255,255,255,.92);
 
   box-shadow:
     0 9px 28px rgba(64,47,88,.13),
@@ -238,18 +237,17 @@ a {
 }
 
 .brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+
   border:0;
   background:none;
 
-  display:flex;
-  align-items:center;
-
-  gap:10px;
-
   color:var(--purple-dark);
 
+  font-size:1.08rem;
   font-weight:900;
-  font-size:1.1rem;
 
   cursor:pointer;
 }
@@ -263,20 +261,14 @@ a {
 
   border-radius:50%;
 
-  background:
-    linear-gradient(
-      145deg,
-      #ffec8e,
-      #ffc94d
-    );
-
   color:var(--purple);
 
-  font-size:1.35rem;
+  background:
+    linear-gradient(145deg,#ffed8e,#ffc94d);
 
   box-shadow:
     0 6px 12px rgba(104,76,37,.18),
-    inset 0 2px rgba(255,255,255,.8);
+    inset 0 2px rgba(255,255,255,.85);
 }
 
 .nav-links {
@@ -292,11 +284,9 @@ a {
   border-radius:999px;
 
   background:transparent;
-
   color:var(--soft);
 
   font-weight:900;
-
   cursor:pointer;
 
   transition:.2s ease;
@@ -304,22 +294,17 @@ a {
 
 .nav-button:hover {
   translate:0 -2px;
-
-  background:
-    rgba(255,255,255,.75);
-
   color:var(--purple);
+  background:rgba(255,255,255,.72);
 }
 
 .nav-button.active {
   color:white;
 
   background:
-    linear-gradient(
-      135deg,
+    linear-gradient(135deg,
       var(--purple),
-      #826ac2
-    );
+      #836bc3);
 
   box-shadow:
     0 7px 16px rgba(80,57,128,.25);
@@ -331,13 +316,16 @@ a {
 
 .page {
   display:none;
-
-  animation:
-    pageIn .45s ease both;
+  animation:pageIn .42s ease both;
 }
 
 .page.active {
   display:block;
+}
+
+.page-inner {
+  width:min(var(--max), calc(100% - 40px));
+  margin:auto;
 }
 
 @keyframes pageIn {
@@ -352,52 +340,99 @@ a {
   }
 }
 
-.page-inner {
-  width:min(
-    var(--max),
-    calc(100% - 40px)
-  );
+/* =========================================================
+   COMMON
+   ========================================================= */
 
-  margin:auto;
+.section-heading {
+  text-align:center;
+  margin-bottom:36px;
+}
+
+.section-heading h2,
+.page-title {
+  margin:0;
+
+  color:var(--purple-dark);
+
+  font-size:
+    clamp(2.7rem,5.7vw,5.3rem);
+
+  line-height:.95;
+  letter-spacing:-.055em;
+}
+
+.section-heading p {
+  max-width:700px;
+  margin:15px auto 0;
+
+  color:var(--soft);
+
+  font-size:1.08rem;
+  line-height:1.65;
+}
+
+.kicker {
+  margin:0 0 8px;
+
+  color:var(--purple);
+
+  font-size:.85rem;
+  font-weight:900;
+  letter-spacing:.17em;
+  text-transform:uppercase;
+}
+
+.big-line {
+  font-size:
+    clamp(1.65rem,3vw,2.55rem);
+
+  line-height:1.25;
+  font-weight:900;
+
+  color:var(--purple-dark);
+}
+
+.pill {
+  display:inline-block;
+
+  padding:8px 14px;
+
+  border-radius:999px;
+
+  font-size:.79rem;
+  font-weight:900;
 }
 
 /* =========================================================
-   HOME HERO
+   HOME — HERO
    ========================================================= */
 
 .hero {
-  min-height:
-    calc(100vh - 82px);
-
-  display:grid;
-  align-items:center;
-
-  padding:
-    40px 0 70px;
+  padding:42px 0 55px;
 }
 
 .hero-world {
   position:relative;
-
   isolation:isolate;
 
   padding:
-    30px 28px 45px;
+    30px 28px 46px;
 
   border-radius:48px;
 
   border:
-    1px solid rgba(255,255,255,.85);
+    1px solid rgba(255,255,255,.86);
 
   background:
     linear-gradient(
       145deg,
-      rgba(255,255,255,.69),
-      rgba(255,247,219,.48)
+      rgba(255,255,255,.70),
+      rgba(255,247,219,.49)
     );
 
   box-shadow:
-    var(--deep-shadow),
+    var(--shadow-deep),
     inset 0 1px white;
 
   backdrop-filter:blur(9px);
@@ -405,11 +440,8 @@ a {
 
 .hero-world:before {
   content:"";
-
   position:absolute;
-
   inset:14px;
-
   z-index:-1;
 
   border-radius:38px;
@@ -417,31 +449,14 @@ a {
   background:
     radial-gradient(
       circle at 50% 0,
-      rgba(255,224,110,.29),
+      rgba(255,224,110,.28),
       transparent 45%
     );
 }
 
 .hero-heading {
   text-align:center;
-
-  padding:
-    4px 15px 28px;
-}
-
-.eyebrow {
-  margin:0 0 5px;
-
-  color:var(--purple);
-
-  font-size:
-    clamp(.78rem,1.3vw,1rem);
-
-  letter-spacing:.18em;
-
-  text-transform:uppercase;
-
-  font-weight:900;
+  padding:4px 15px 28px;
 }
 
 .hero-heading h1 {
@@ -450,10 +465,9 @@ a {
   color:var(--purple-dark);
 
   font-size:
-    clamp(3.5rem,8vw,7.7rem);
+    clamp(3.8rem,8vw,7.8rem);
 
   line-height:.91;
-
   letter-spacing:-.065em;
 
   text-shadow:
@@ -465,6 +479,17 @@ a {
   color:var(--pink);
 }
 
+.hero-tagline {
+  margin:12px 0 0;
+
+  color:var(--soft);
+
+  font-size:
+    clamp(1rem,1.8vw,1.3rem);
+
+  font-weight:800;
+}
+
 /* =========================================================
    MEDIA FRAME
    ========================================================= */
@@ -473,7 +498,6 @@ a {
   position:relative;
 
   width:min(1120px,100%);
-
   margin:auto;
 
   padding:10px;
@@ -484,7 +508,7 @@ a {
     linear-gradient(
       145deg,
       rgba(255,255,255,.98),
-      rgba(255,228,156,.74)
+      rgba(255,228,156,.75)
     );
 
   box-shadow:
@@ -502,12 +526,10 @@ a {
   content:"";
 
   position:absolute;
-
   z-index:-1;
 
   left:9%;
   right:9%;
-
   bottom:-25px;
 
   height:35px;
@@ -515,7 +537,7 @@ a {
   border-radius:50%;
 
   background:
-    rgba(56,43,71,.19);
+    rgba(56,43,71,.18);
 
   filter:blur(15px);
 }
@@ -523,7 +545,6 @@ a {
 .hero-video,
 .adventure-video {
   width:100%;
-
   aspect-ratio:16/9;
 
   object-fit:cover;
@@ -535,17 +556,15 @@ a {
 
 .media-hint {
   position:absolute;
+  z-index:7;
 
   left:50%;
   bottom:25px;
 
   translate:-50% 0;
 
-  z-index:5;
-
   display:flex;
   align-items:center;
-
   gap:8px;
 
   padding:10px 16px;
@@ -555,42 +574,26 @@ a {
   color:var(--purple-dark);
 
   background:
-    rgba(255,255,255,.88);
+    rgba(255,255,255,.90);
 
   box-shadow:
     0 8px 22px rgba(48,36,66,.17);
 
   font-size:.86rem;
-
   font-weight:900;
 
   pointer-events:none;
 
-  transition:
-    opacity .2s ease,
-    translate .2s ease;
+  transition:.2s ease;
 }
 
-.media-frame.playing
-.media-hint,
-.adventure-card.playing
-.media-hint {
+.playing .media-hint {
   opacity:0;
-
   translate:-50% 6px;
 }
 
-.sound-icon {
-  font-size:1rem;
-}
-
-/* =========================================================
-   HERO CHARACTERS
-   ========================================================= */
-
 .hero-character {
   position:absolute;
-
   z-index:10;
 
   pointer-events:none;
@@ -603,30 +606,28 @@ a {
 }
 
 .hero-diana {
-  width:
-    clamp(120px,14vw,225px);
+  width:clamp(120px,14vw,225px);
 
   right:-25px;
   bottom:-36px;
 
   animation:
-    dianaFloat 4.8s
-    ease-in-out infinite;
+    characterFloat
+    4.8s ease-in-out infinite;
 }
 
 .hero-buddy {
-  width:
-    clamp(82px,9vw,140px);
+  width:clamp(82px,9vw,140px);
 
   left:-8px;
   bottom:-22px;
 
   animation:
-    buddyFloat 4.1s
-    ease-in-out infinite -.8s;
+    buddyFloat
+    4.1s ease-in-out infinite -.8s;
 }
 
-@keyframes dianaFloat {
+@keyframes characterFloat {
   50% {
     transform:
       translateY(-7px)
@@ -643,17 +644,60 @@ a {
 }
 
 /* =========================================================
+   HOME — CORE INTRO
+   ========================================================= */
+
+.home-intro {
+  padding:45px 0 70px;
+}
+
+.intro-card {
+  max-width:1000px;
+  margin:auto;
+
+  text-align:center;
+
+  padding:
+    48px clamp(24px,6vw,75px);
+
+  border-radius:40px;
+
+  background:
+    rgba(255,255,255,.80);
+
+  border:
+    1px solid rgba(255,255,255,.95);
+
+  box-shadow:var(--shadow);
+}
+
+.intro-card p {
+  margin:0 auto;
+
+  max-width:850px;
+
+  color:var(--soft);
+
+  font-size:
+    clamp(1.08rem,2vw,1.32rem);
+
+  line-height:1.75;
+}
+
+.intro-card .big-line {
+  margin:28px 0 0;
+}
+
+/* =========================================================
    TALK TO DIANA
    ========================================================= */
 
 .talk-section {
-  padding:
-    45px 0 90px;
+  padding:20px 0 85px;
 }
 
 .talk-world {
   position:relative;
-
   overflow:hidden;
 
   min-height:620px;
@@ -669,6 +713,7 @@ a {
       rgba(255,255,255,.95),
       transparent 28%
     ),
+
     linear-gradient(
       135deg,
       #fff2c9,
@@ -679,26 +724,20 @@ a {
   border:
     1px solid rgba(255,255,255,.92);
 
-  box-shadow:
-    var(--shadow);
+  box-shadow:var(--shadow);
 }
 
 .talk-world:before,
 .talk-world:after {
   content:"";
-
   position:absolute;
-
   border-radius:50%;
-
-  background:
-    rgba(255,255,255,.24);
+  background:rgba(255,255,255,.24);
 }
 
 .talk-world:before {
   width:300px;
   height:300px;
-
   right:-90px;
   top:-100px;
 }
@@ -706,50 +745,12 @@ a {
 .talk-world:after {
   width:220px;
   height:220px;
-
   left:-100px;
   bottom:-90px;
 }
 
-.section-heading {
-  position:relative;
-
-  z-index:2;
-
-  text-align:center;
-
-  margin-bottom:38px;
-}
-
-.section-heading h2 {
-  margin:0;
-
-  color:var(--purple-dark);
-
-  font-size:
-    clamp(2.5rem,5vw,4.8rem);
-
-  line-height:.95;
-
-  letter-spacing:-.055em;
-}
-
-.section-heading p {
-  max-width:620px;
-
-  margin:
-    14px auto 0;
-
-  color:var(--soft);
-
-  font-size:1.05rem;
-
-  line-height:1.6;
-}
-
 .talk-layout {
   position:relative;
-
   z-index:2;
 
   display:grid;
@@ -775,9 +776,7 @@ a {
 
 .talk-diana {
   width:min(300px,78%);
-
   position:relative;
-
   z-index:2;
 
   filter:
@@ -787,13 +786,12 @@ a {
     );
 
   animation:
-    talkFloat 4.5s
-    ease-in-out infinite;
+    characterFloat
+    4.5s ease-in-out infinite;
 }
 
 .talk-buddy {
   position:absolute;
-
   z-index:3;
 
   width:120px;
@@ -810,7 +808,6 @@ a {
 
 .character-shadow {
   position:absolute;
-
   bottom:7px;
 
   width:72%;
@@ -824,24 +821,14 @@ a {
   filter:blur(11px);
 }
 
-@keyframes talkFloat {
-  50% {
-    transform:
-      translateY(-6px);
-  }
-}
-
 .conversation {
   display:grid;
-
   gap:22px;
 }
 
 .question-buttons {
   display:flex;
-
   flex-wrap:wrap;
-
   gap:10px;
 }
 
@@ -863,7 +850,6 @@ a {
     inset 0 1px white;
 
   font-weight:900;
-
   cursor:pointer;
 
   transition:.18s ease;
@@ -908,14 +894,13 @@ a {
   display:flex;
   align-items:center;
 
-  padding:
-    30px 34px;
+  padding:30px 34px;
 
   border-radius:
     34px 34px 34px 10px;
 
   background:
-    rgba(255,255,255,.94);
+    rgba(255,255,255,.95);
 
   box-shadow:
     0 18px 40px
@@ -926,7 +911,6 @@ a {
     clamp(1.05rem,1.8vw,1.27rem);
 
   line-height:1.65;
-
   font-weight:700;
 
   transition:
@@ -946,7 +930,7 @@ a {
   height:40px;
 
   background:
-    rgba(255,255,255,.94);
+    rgba(255,255,255,.95);
 
   clip-path:
     polygon(
@@ -970,8 +954,7 @@ a {
   top:-13px;
   left:28px;
 
-  padding:
-    6px 14px;
+  padding:6px 14px;
 
   border-radius:999px;
 
@@ -985,7 +968,6 @@ a {
   color:white;
 
   font-size:.82rem;
-
   font-weight:900;
 
   box-shadow:
@@ -994,85 +976,335 @@ a {
 }
 
 /* =========================================================
-   CONTACT
+   HOME — PLAY FOLLOWS HOME
    ========================================================= */
 
-.contact-section {
-  padding:
-    0 0 105px;
+.offscreen-section {
+  padding:0 0 85px;
 }
 
-.contact-box {
+.offscreen-card {
+  display:grid;
+
+  grid-template-columns:
+    .85fr 1.15fr;
+
+  gap:38px;
+
+  align-items:center;
+
   padding:
-    48px clamp(20px,5vw,60px);
+    48px clamp(24px,5vw,65px);
 
   border-radius:42px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(255,241,182,.92),
-      rgba(255,213,229,.94),
-      rgba(209,238,255,.95)
+      #dff4ff,
+      #fff2cc 48%,
+      #ffe0ea
     );
 
-  border:
-    1px solid rgba(255,255,255,.9);
+  box-shadow:var(--shadow);
 
-  box-shadow:
-    var(--shadow);
+  border:
+    1px solid rgba(255,255,255,.94);
 }
 
-.contact-options {
+.offscreen-copy h2 {
+  margin:0 0 18px;
+
+  color:var(--purple-dark);
+
+  font-size:
+    clamp(2.3rem,4vw,4rem);
+
+  line-height:1;
+  letter-spacing:-.045em;
+}
+
+.offscreen-copy p {
+  color:var(--soft);
+  line-height:1.7;
+  font-size:1.05rem;
+}
+
+.real-world-actions {
   display:grid;
 
   grid-template-columns:
     repeat(2,1fr);
 
-  gap:22px;
-
-  max-width:900px;
-
-  margin:auto;
+  gap:12px;
 }
 
-.contact-button {
-  min-height:150px;
+.action-card {
+  min-height:95px;
 
-  border:0;
+  display:flex;
+  align-items:center;
 
-  border-radius:30px;
+  padding:18px;
+
+  border-radius:23px;
+
+  background:
+    rgba(255,255,255,.78);
+
+  box-shadow:
+    0 10px 22px
+    rgba(64,48,82,.10);
+
+  font-weight:900;
+}
+
+.action-card:nth-child(1) {
+  transform:rotate(-1deg);
+}
+
+.action-card:nth-child(2) {
+  transform:rotate(1deg);
+}
+
+.action-card:nth-child(3) {
+  transform:rotate(.5deg);
+}
+
+.action-card:nth-child(4) {
+  transform:rotate(-.5deg);
+}
+
+/* =========================================================
+   COMMENTS
+   ========================================================= */
+
+.comments-section {
+  padding:0 0 110px;
+}
+
+.comments-card {
+  position:relative;
+  overflow:hidden;
+
+  max-width:1050px;
+  margin:auto;
+
+  padding:
+    48px clamp(22px,6vw,70px);
+
+  border-radius:42px;
 
   background:
     rgba(255,255,255,.82);
 
-  color:var(--ink);
+  border:
+    1px solid rgba(255,255,255,.95);
 
-  font-size:
-    clamp(1.4rem,2.4vw,2rem);
-
-  font-weight:900;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 15px 30px
-    rgba(66,48,85,.12),
-    inset 0 1px white;
-
-  transition:.2s ease;
+  box-shadow:var(--shadow);
 }
 
-.contact-button:hover {
-  transform:
-    translateY(-7px)
-    scale(1.015);
+.comments-card:after {
+  content:"";
+
+  position:absolute;
+
+  width:260px;
+  height:260px;
+
+  right:-110px;
+  bottom:-130px;
+
+  border-radius:50%;
+
+  background:
+    rgba(243,142,183,.12);
+
+  pointer-events:none;
+}
+
+.comments-title {
+  text-align:center;
+  margin-bottom:28px;
+}
+
+.comments-title h2 {
+  margin:0;
+
+  color:var(--purple-dark);
+
+  font-size:
+    clamp(2.1rem,4vw,3.6rem);
+
+  letter-spacing:-.04em;
+}
+
+.comments-title p {
+  margin:10px auto 0;
+
+  max-width:550px;
+
+  color:var(--soft);
+  line-height:1.55;
+}
+
+.audience-choice {
+  display:flex;
+  justify-content:center;
+
+  gap:10px;
+
+  margin-bottom:22px;
+}
+
+.audience-button {
+  min-width:120px;
+
+  border:2px solid transparent;
+
+  padding:11px 20px;
+
+  border-radius:999px;
+
+  background:var(--cream);
+
+  color:var(--ink);
+
+  font-weight:900;
+  cursor:pointer;
+
+  transition:.18s ease;
+}
+
+.audience-button:hover {
+  transform:translateY(-2px);
+}
+
+.audience-button.active {
+  color:var(--purple-dark);
+
+  background:var(--purple-soft);
+
+  border-color:
+    rgba(101,80,166,.22);
+}
+
+.comment-form {
+  max-width:720px;
+  margin:auto;
+}
+
+.form-row {
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:12px;
+}
+
+.field {
+  margin-bottom:12px;
+}
+
+.field label {
+  display:block;
+
+  margin:
+    0 0 6px 4px;
+
+  color:var(--soft);
+
+  font-size:.83rem;
+  font-weight:900;
+}
+
+.field input,
+.field textarea {
+  width:100%;
+
+  border:
+    1px solid rgba(79,61,104,.11);
+
+  outline:none;
+
+  padding:14px 16px;
+
+  border-radius:18px;
+
+  background:
+    rgba(255,250,240,.88);
+
+  color:var(--ink);
+
+  box-shadow:
+    inset 0 1px 3px
+    rgba(50,38,67,.05);
+
+  transition:.18s ease;
+}
+
+.field textarea {
+  min-height:130px;
+  resize:vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color:
+    rgba(101,80,166,.38);
 
   background:white;
 
   box-shadow:
-    0 22px 40px
-    rgba(66,48,85,.18);
+    0 0 0 4px
+    rgba(101,80,166,.08);
+}
+
+.send-button {
+  width:100%;
+
+  border:0;
+
+  padding:14px 20px;
+
+  border-radius:999px;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--purple),
+      #826ac2
+    );
+
+  font-weight:900;
+  cursor:pointer;
+
+  box-shadow:
+    0 10px 22px
+    rgba(80,57,128,.24);
+
+  transition:.18s ease;
+}
+
+.send-button:hover {
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 15px 28px
+    rgba(80,57,128,.28);
+}
+
+.form-note {
+  margin:12px 0 0;
+
+  text-align:center;
+
+  color:#8a8292;
+
+  font-size:.78rem;
 }
 
 /* =========================================================
@@ -1080,42 +1312,35 @@ a {
    ========================================================= */
 
 .explore-page {
-  padding:
-    60px 0 110px;
+  padding:58px 0 110px;
 }
 
-.page-title {
-  margin:0;
+.explore-intro {
+  max-width:850px;
+
+  margin:18px auto 55px;
 
   text-align:center;
 
-  color:var(--purple-dark);
+  color:var(--soft);
 
-  font-size:
-    clamp(3rem,6vw,5.7rem);
-
-  line-height:.95;
-
-  letter-spacing:-.06em;
-
-  text-shadow:
-    0 3px white;
+  font-size:1.08rem;
+  line-height:1.7;
 }
 
 .explore-stream {
   display:grid;
+  gap:68px;
+}
 
-  gap:70px;
-
-  margin-top:55px;
+.adventure-block {
+  max-width:1120px;
+  margin:auto;
+  width:100%;
 }
 
 .adventure-card {
   position:relative;
-
-  width:min(1120px,100%);
-
-  margin:auto;
 
   padding:10px;
 
@@ -1124,7 +1349,7 @@ a {
   background:
     linear-gradient(
       145deg,
-      rgba(255,255,255,.97),
+      rgba(255,255,255,.98),
       rgba(255,239,198,.76)
     );
 
@@ -1137,13 +1362,15 @@ a {
   transition:.25s ease;
 }
 
-.adventure-card:nth-child(odd) {
+.adventure-block:nth-child(odd)
+.adventure-card {
   transform:
     perspective(1500px)
     rotateY(.8deg);
 }
 
-.adventure-card:nth-child(even) {
+.adventure-block:nth-child(even)
+.adventure-card {
   transform:
     perspective(1500px)
     rotateY(-.8deg);
@@ -1153,7 +1380,7 @@ a {
   transform:
     perspective(1500px)
     translateY(-7px)
-    scale(1.008);
+    scale(1.008) !important;
 
   box-shadow:
     0 29px 62px
@@ -1162,21 +1389,18 @@ a {
 
 .adventure-label {
   position:absolute;
-
-  z-index:5;
+  z-index:6;
 
   top:-17px;
   left:25px;
 
-  padding:
-    8px 16px;
+  padding:8px 16px;
 
   border-radius:999px;
 
   color:var(--purple-dark);
 
-  background:
-    #fff8d8;
+  background:#fff8d8;
 
   box-shadow:
     0 7px 15px
@@ -1185,27 +1409,55 @@ a {
   font-weight:900;
 }
 
+.adventure-copy {
+  max-width:790px;
+
+  margin:22px auto 0;
+
+  text-align:center;
+
+  color:var(--soft);
+
+  line-height:1.65;
+}
+
+.world-divider {
+  width:80px;
+  height:5px;
+
+  margin:0 auto;
+
+  border-radius:999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--pink),
+      var(--yellow),
+      var(--green),
+      var(--blue)
+    );
+}
+
 /* =========================================================
    ABOUT
    ========================================================= */
 
 .about-page {
-  padding:
-    60px 0 110px;
+  padding:58px 0 110px;
 }
 
-.about-characters {
+.about-hero {
   position:relative;
+  overflow:hidden;
 
-  min-height:380px;
+  min-height:390px;
 
-  margin-top:42px;
+  margin-top:40px;
 
   display:flex;
   align-items:flex-end;
   justify-content:center;
-
-  overflow:hidden;
 
   border-radius:44px;
 
@@ -1217,11 +1469,10 @@ a {
       #e0efff
     );
 
-  box-shadow:
-    var(--shadow);
-
   border:
-    1px solid rgba(255,255,255,.9);
+    1px solid rgba(255,255,255,.92);
+
+  box-shadow:var(--shadow);
 }
 
 .about-diana {
@@ -1235,8 +1486,8 @@ a {
     );
 
   animation:
-    talkFloat 4.5s
-    ease-in-out infinite;
+    characterFloat
+    4.5s ease-in-out infinite;
 }
 
 .about-buddy {
@@ -1252,8 +1503,141 @@ a {
     );
 }
 
+.story-grid {
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:22px;
+
+  margin-top:60px;
+}
+
+.story-card {
+  padding:
+    34px 32px;
+
+  border-radius:32px;
+
+  background:
+    rgba(255,255,255,.82);
+
+  border:
+    1px solid rgba(255,255,255,.94);
+
+  box-shadow:
+    0 14px 34px
+    rgba(55,42,73,.11);
+}
+
+.story-card:nth-child(1) {
+  background:
+    linear-gradient(
+      145deg,
+      #fff9dc,
+      rgba(255,255,255,.90)
+    );
+}
+
+.story-card:nth-child(2) {
+  background:
+    linear-gradient(
+      145deg,
+      #e8f7eb,
+      rgba(255,255,255,.90)
+    );
+}
+
+.story-card:nth-child(3) {
+  background:
+    linear-gradient(
+      145deg,
+      #e7f5ff,
+      rgba(255,255,255,.90)
+    );
+}
+
+.story-card:nth-child(4) {
+  background:
+    linear-gradient(
+      145deg,
+      #fbe7ef,
+      rgba(255,255,255,.90)
+    );
+}
+
+.story-card h3 {
+  margin:0 0 13px;
+
+  color:var(--purple-dark);
+
+  font-size:
+    clamp(1.45rem,2.3vw,2rem);
+}
+
+.story-card p {
+  margin:0;
+
+  color:var(--soft);
+
+  line-height:1.7;
+}
+
+.project-statement {
+  margin-top:65px;
+
+  padding:
+    50px clamp(25px,6vw,80px);
+
+  text-align:center;
+
+  border-radius:42px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #5f4c9c,
+      #7b63b9
+    );
+
+  color:white;
+
+  box-shadow:
+    var(--shadow-deep);
+}
+
+.project-statement .kicker {
+  color:#fff0a7;
+}
+
+.project-statement p {
+  max-width:900px;
+  margin:18px auto 0;
+
+  color:
+    rgba(255,255,255,.88);
+
+  line-height:1.75;
+
+  font-size:1.06rem;
+}
+
+.project-statement blockquote {
+  max-width:900px;
+
+  margin:35px auto 0;
+
+  font-size:
+    clamp(1.7rem,3.5vw,3rem);
+
+  line-height:1.22;
+
+  font-weight:900;
+}
+
 /* =========================================================
-   PARENTS
+   PARENT VOICES
    ========================================================= */
 
 .parents-section {
@@ -1266,56 +1650,53 @@ a {
     rgba(101,81,167,.20);
 }
 
-.parents-grid {
-  display:grid;
+.parents-copy {
+  max-width:700px;
 
-  grid-template-columns:
-    repeat(2,1fr);
+  margin:16px auto 0;
 
-  gap:24px;
+  text-align:center;
 
-  margin-top:45px;
+  color:var(--soft);
+
+  line-height:1.65;
 }
 
-.parent-card {
-  padding:10px;
+.parent-note {
+  max-width:720px;
 
-  border-radius:28px;
+  margin:35px auto 0;
+
+  padding:22px 25px;
+
+  text-align:center;
+
+  border-radius:25px;
 
   background:
-    rgba(255,255,255,.9);
+    rgba(255,255,255,.68);
+
+  color:var(--soft);
+
+  line-height:1.6;
 
   box-shadow:
-    0 16px 34px
-    rgba(55,42,73,.13);
-
-  transition:.2s ease;
+    0 10px 25px
+    rgba(55,42,73,.08);
 }
 
-.parent-card:nth-child(1),
-.parent-card:nth-child(4) {
-  transform:rotate(-.5deg);
-}
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
-.parent-card:nth-child(2),
-.parent-card:nth-child(3) {
-  transform:rotate(.5deg);
-}
+.footer {
+  padding:25px 20px 45px;
 
-.parent-card:hover {
-  transform:
-    translateY(-5px)
-    rotate(0);
+  text-align:center;
 
-  box-shadow:
-    0 22px 45px
-    rgba(55,42,73,.18);
-}
+  color:#847c8d;
 
-.parent-card img {
-  width:100%;
-
-  border-radius:20px;
+  font-size:.78rem;
 }
 
 /* =========================================================
@@ -1325,15 +1706,12 @@ a {
 @media(max-width:850px) {
 
   .site-header {
-    padding:
-      9px 8px 0;
+    padding:9px 8px 0;
   }
 
   .nav {
     width:100%;
-
-    padding:
-      8px 9px;
+    padding:8px 9px;
   }
 
   .brand-text {
@@ -1351,22 +1729,16 @@ a {
   }
 
   .nav-button {
-    padding:
-      9px 9px;
-
-    font-size:.76rem;
+    padding:9px 8px;
+    font-size:.73rem;
   }
 
   .page-inner {
-    width:
-      calc(100% - 22px);
+    width:calc(100% - 22px);
   }
 
   .hero {
-    min-height:auto;
-
-    padding:
-      28px 0 55px;
+    padding:28px 0 45px;
   }
 
   .hero-world {
@@ -1383,7 +1755,6 @@ a {
   .media-frame,
   .adventure-card {
     padding:6px;
-
     border-radius:23px;
   }
 
@@ -1394,44 +1765,34 @@ a {
 
   .hero-diana {
     width:115px;
-
     right:-20px;
     bottom:-45px;
   }
 
   .hero-buddy {
     width:78px;
-
     left:-14px;
     bottom:-29px;
   }
 
   .media-hint {
     bottom:15px;
-
-    font-size:.75rem;
-
-    padding:
-      8px 12px;
+    padding:8px 12px;
+    font-size:.74rem;
   }
 
-  .talk-section {
-    padding:
-      30px 0 65px;
+  .intro-card {
+    padding:34px 21px;
   }
 
   .talk-world {
     min-height:0;
-
-    padding:
-      35px 17px;
-
+    padding:35px 17px;
     border-radius:30px;
   }
 
   .talk-layout {
     grid-template-columns:1fr;
-
     gap:20px;
   }
 
@@ -1445,7 +1806,6 @@ a {
 
   .talk-buddy {
     width:90px;
-
     right:18%;
   }
 
@@ -1455,40 +1815,31 @@ a {
 
   .question-button {
     font-size:.82rem;
-
-    padding:
-      10px 12px;
+    padding:10px 12px;
   }
 
   .speech-bubble {
     min-height:220px;
-
-    padding:
-      28px 23px;
-
+    padding:28px 23px;
     font-size:1rem;
-
-    border-radius:
-      27px 27px 27px 10px;
   }
 
   .speech-bubble:before {
     display:none;
   }
 
-  .contact-box {
-    padding:
-      24px 15px;
-  }
-
-  .contact-options {
+  .offscreen-card {
     grid-template-columns:1fr;
-
-    gap:14px;
+    padding:35px 22px;
   }
 
-  .contact-button {
-    min-height:105px;
+  .real-world-actions {
+    grid-template-columns:1fr;
+  }
+
+  .form-row {
+    grid-template-columns:1fr;
+    gap:0;
   }
 
   .explore-page,
@@ -1497,21 +1848,20 @@ a {
   }
 
   .explore-stream {
-    gap:42px;
-
-    margin-top:45px;
+    gap:48px;
   }
 
-  .parents-grid {
+  .story-grid {
     grid-template-columns:1fr;
+  }
+
+  .about-hero {
+    min-height:300px;
   }
 
 }
 
-@media(
-  prefers-reduced-motion:reduce
-) {
-
+@media(prefers-reduced-motion:reduce) {
   *,
   *:before,
   *:after {
@@ -1520,22 +1870,17 @@ a {
     transition-duration:.001ms !important;
     scroll-behavior:auto !important;
   }
-
 }
 
 </style>
 </head>
 
-
 <body>
 
-<div
-  class="sky-world"
-  aria-hidden="true"
->
-  <div class="sun-glow"></div>
-  <div class="cloud cloud1"></div>
-  <div class="cloud cloud2"></div>
+<div class="sky-world" aria-hidden="true">
+  <div class="sun"></div>
+  <div class="cloud one"></div>
+  <div class="cloud two"></div>
 </div>
 
 
@@ -1545,60 +1890,52 @@ a {
 
 <header class="site-header">
 
-<nav
-  class="nav"
-  aria-label="Main navigation"
->
+<nav class="nav" aria-label="Main navigation">
 
 <button
   class="brand"
-  data-page-link="home"
   type="button"
+  data-page-link="home"
 >
   <span class="brand-star">★</span>
-  <span class="brand-text">
-    Tiny Explorers
-  </span>
+  <span class="brand-text">Tiny Explorers</span>
 </button>
-
 
 <div class="nav-links">
 
 <button
   class="nav-button active"
+  type="button"
   data-page-link="home"
-  type="button"
 >
-  Tiny Explorers
+Tiny Explorers
 </button>
 
 <button
   class="nav-button"
+  type="button"
   data-page-link="explore"
-  type="button"
 >
-  Explore the World
+Explore the World
 </button>
 
 <button
   class="nav-button"
-  data-page-link="about"
   type="button"
+  data-page-link="about"
 >
-  About the Project
+About the Project
 </button>
 
 </div>
-
 </nav>
-
 </header>
 
 
 <main>
 
 <!-- ======================================================
-     HOME
+     PAGE 1 — TINY EXPLORERS
      ====================================================== -->
 
 <section
@@ -1615,7 +1952,7 @@ a {
 
 <header class="hero-heading">
 
-<p class="eyebrow">
+<p class="kicker">
 A Living World for Little Explorers
 </p>
 
@@ -1623,12 +1960,17 @@ A Living World for Little Explorers
 Tiny <span>Explorers</span>
 </h1>
 
+<p class="hero-tagline">
+Play. Discover. Help. Create. Grow.
+</p>
+
 </header>
 
 
 <div
-  class="media-frame hero-media"
+  class="media-frame"
   data-interactive-media
+  data-media-name="Main Promo"
 >
 
 <video
@@ -1638,22 +1980,17 @@ Tiny <span>Explorers</span>
   playsinline
   preload="metadata"
 >
-  <source
-    src="Promo_Video_01.mp4"
-    type="video/mp4"
-  >
+<source
+  src="Promo_Video_01.mp4"
+  type="video/mp4"
+>
 </video>
 
-
-<div
-  class="media-hint"
-  aria-hidden="true"
->
+<div class="media-hint">
   <span>▶</span>
   <span>Hover or tap to explore</span>
-  <span class="sound-icon">♪</span>
+  <span>♪</span>
 </div>
-
 
 <img
   class="hero-character hero-diana"
@@ -1670,35 +2007,57 @@ Tiny <span>Explorers</span>
 </div>
 
 </div>
-
 </section>
 
 
-<!-- ====================================================
-     TALK TO DIANA
-     ==================================================== -->
+<section class="home-intro">
+
+<div class="intro-card">
+
+<p>
+Tiny Explorers is a play-first world where
+children can explore, pretend, discover, help,
+create, and grow.
+<br><br>
+They have their own Explorer, Buddy, Home,
+memories, belongings, and adventures—and the
+world grows with them.
+</p>
+
+<p class="big-line">
+One child. One world.<br>
+Endless ways to play.
+</p>
+
+</div>
+</section>
+
+
+<!-- TALK TO DIANA -->
 
 <section class="talk-section">
 
 <div class="talk-world">
 
-
 <header class="section-heading">
 
-<h2>
-Talk to Diana
-</h2>
+<p class="kicker">
+Play becomes conversation
+</p>
+
+<h2>Talk to Diana</h2>
 
 <p>
-A little glimpse of how play can become
-a conversation at home.
+What happens inside Tiny Explorers can give
+families something real to talk about afterward.
+Choose a question and see the kind of day an
+Explorer might tell you about.
 </p>
 
 </header>
 
 
 <div class="talk-layout">
-
 
 <div class="diana-stage">
 
@@ -1721,48 +2080,44 @@ a conversation at home.
 
 <div class="conversation">
 
-
-<div
-  class="question-buttons"
-  aria-label="Questions for Diana"
->
+<div class="question-buttons">
 
 <button
   class="question-button"
-  data-question="did"
   type="button"
+  data-question="did"
 >
 What did you do today?
 </button>
 
 <button
   class="question-button"
-  data-question="learn"
   type="button"
+  data-question="learn"
 >
 What did you learn today?
 </button>
 
 <button
   class="question-button"
-  data-question="discover"
   type="button"
+  data-question="discover"
 >
 What did you discover today?
 </button>
 
 <button
   class="question-button"
-  data-question="day"
   type="button"
+  data-question="day"
 >
 How was your day?
 </button>
 
 <button
   class="question-button"
-  data-question="kind"
   type="button"
+  data-question="kind"
 >
 Did you do anything kind or helpful today?
 </button>
@@ -1786,56 +2141,221 @@ Ask me about my day!
 
 </div>
 
-
 </div>
 </div>
 </div>
-
 </section>
 
 
-<!-- ====================================================
-     CONTACT / COMMENTS
-     ==================================================== -->
+<!-- PLAY FOLLOWS HOME -->
 
-<section
-  id="contact"
-  class="contact-section"
+<section class="offscreen-section">
+
+<div class="offscreen-card">
+
+<div class="offscreen-copy">
+
+<p class="kicker">
+Beyond screen time
+</p>
+
+<h2>
+Play that can follow them home
+</h2>
+
+<p>
+Tiny Explorers doesn't have to end when the
+screen turns off. Activities can encourage a
+child to move, notice the world around them,
+help at home, or share an experience with
+someone they love.
+</p>
+
+<p>
+Parents can also choose areas they'd like to
+encourage—such as numbers, language, science,
+movement, helping, or creativity.
+</p>
+
+</div>
+
+
+<div class="real-world-actions">
+
+<div class="action-card">
+Help Mom with something at home.
+</div>
+
+<div class="action-card">
+Dance together.
+</div>
+
+<div class="action-card">
+Jump six times.
+</div>
+
+<div class="action-card">
+Look for something outside.
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- COMMENTS -->
+
+<section class="comments-section">
+
+<div class="comments-card">
+
+<div class="comments-title">
+
+<h2>
+Want to tell us something?
+</h2>
+
+<p>
+A thought, a question, something you loved,
+something you'd like to see—we'd like to hear it.
+</p>
+
+</div>
+
+
+<div
+  class="audience-choice"
+  aria-label="Choose who you are"
 >
 
-<div class="contact-box">
-
-<div class="contact-options">
-
 <button
-  class="contact-button"
   type="button"
-  data-contact="parent"
+  class="audience-button active"
+  data-audience="Parent"
 >
 Parent
 </button>
 
 <button
-  class="contact-button"
   type="button"
-  data-contact="other"
+  class="audience-button"
+  data-audience="Other"
 >
 Other
 </button>
 
 </div>
 
+
+<form
+  id="commentForm"
+  class="comment-form"
+  action="https://formsubmit.co/oderaycortega@gmail.com"
+  method="POST"
+>
+
+<input
+  type="hidden"
+  name="Visitor Type"
+  id="visitorType"
+  value="Parent"
+>
+
+<input
+  type="hidden"
+  name="_subject"
+  id="formSubject"
+  value="Tiny Explorers — Parent Comment"
+>
+
+<input
+  type="hidden"
+  name="_captcha"
+  value="false"
+>
+
+<input
+  type="hidden"
+  name="_template"
+  value="table"
+>
+
+
+<div class="form-row">
+
+<div class="field">
+
+<label for="visitorName">
+Name — optional
+</label>
+
+<input
+  id="visitorName"
+  name="Name"
+  type="text"
+  autocomplete="name"
+>
+
 </div>
 
-</section>
 
+<div class="field">
+
+<label for="visitorEmail">
+Email — optional
+</label>
+
+<input
+  id="visitorEmail"
+  name="Email"
+  type="email"
+  autocomplete="email"
+>
+
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label for="visitorComment">
+Comment
+</label>
+
+<textarea
+  id="visitorComment"
+  name="Comment"
+  required
+></textarea>
+
+</div>
+
+
+<button
+  class="send-button"
+  type="submit"
+>
+Send
+</button>
+
+
+<p class="form-note">
+No account needed. Just say what you think.
+</p>
+
+</form>
+
+</div>
+</section>
 
 </div>
 </section>
 
 
 <!-- ======================================================
-     EXPLORE
+     PAGE 2 — EXPLORE THE WORLD
      ====================================================== -->
 
 <section
@@ -1845,21 +2365,41 @@ Other
 
 <div class="page-inner explore-page">
 
+<header class="section-heading">
+
+<p class="kicker">
+One connected world
+</p>
+
 <h2 class="page-title">
 Explore the World
 </h2>
+
+<p class="explore-intro">
+Tiny Explorers brings different kinds of
+childhood play into one connected world.
+There is no single way children are supposed
+to play. The world is theirs to explore.
+</p>
+
+</header>
 
 
 <div class="explore-stream">
 
 
-<article
+<!-- HOME -->
+
+<div class="adventure-block">
+
+<div
   class="adventure-card"
   data-interactive-media
+  data-media-name="Home"
 >
 
 <div class="adventure-label">
-Home
+Home + Garden
 </div>
 
 <video
@@ -1876,12 +2416,28 @@ Home
 <span>♪</span>
 </div>
 
-</article>
+</div>
+
+<p class="adventure-copy">
+Play. Cook. Sleep. Garden. Care for Buddy.
+Change things. Discover interactions.
+Sometimes playing is the whole point.
+</p>
+
+</div>
 
 
-<article
+<div class="world-divider"></div>
+
+
+<!-- LITTLE TOWN -->
+
+<div class="adventure-block">
+
+<div
   class="adventure-card"
   data-interactive-media
+  data-media-name="Little Town"
 >
 
 <div class="adventure-label">
@@ -1902,12 +2458,29 @@ Little Town
 <span>♪</span>
 </div>
 
-</article>
+</div>
+
+<p class="adventure-copy">
+Everyday places become opportunities for play:
+drive through town, visit shops, meet characters,
+help at the fire station, explore the library,
+care for animals and respond to the world around you.
+</p>
+
+</div>
 
 
-<article
+<div class="world-divider"></div>
+
+
+<!-- FOREST -->
+
+<div class="adventure-block">
+
+<div
   class="adventure-card"
   data-interactive-media
+  data-media-name="Forest Adventure"
 >
 
 <div class="adventure-label">
@@ -1928,12 +2501,18 @@ Forest Adventure
 <span>♪</span>
 </div>
 
-</article>
+</div>
+</div>
 
 
-<article
+<!-- OCEAN -->
+
+<div class="adventure-block">
+
+<div
   class="adventure-card"
   data-interactive-media
+  data-media-name="Ocean Adventure"
 >
 
 <div class="adventure-label">
@@ -1954,12 +2533,18 @@ Ocean Adventure
 <span>♪</span>
 </div>
 
-</article>
+</div>
+</div>
 
 
-<article
+<!-- TRANSPORTATION -->
+
+<div class="adventure-block">
+
+<div
   class="adventure-card"
   data-interactive-media
+  data-media-name="Transportation Adventure"
 >
 
 <div class="adventure-label">
@@ -1980,12 +2565,18 @@ Transportation Adventure
 <span>♪</span>
 </div>
 
-</article>
+</div>
+</div>
 
 
-<article
+<!-- SPACE -->
+
+<div class="adventure-block">
+
+<div
   class="adventure-card"
   data-interactive-media
+  data-media-name="Space Adventure"
 >
 
 <div class="adventure-label">
@@ -2006,12 +2597,18 @@ Space Adventure
 <span>♪</span>
 </div>
 
-</article>
+</div>
+</div>
 
 
-<article
+<!-- CASTLE -->
+
+<div class="adventure-block">
+
+<div
   class="adventure-card"
   data-interactive-media
+  data-media-name="Castle Adventure"
 >
 
 <div class="adventure-label">
@@ -2032,12 +2629,18 @@ Castle Adventure
 <span>♪</span>
 </div>
 
-</article>
+</div>
+</div>
 
 
-<article
+<!-- PIRATE -->
+
+<div class="adventure-block">
+
+<div
   class="adventure-card"
   data-interactive-media
+  data-media-name="Pirate Adventure"
 >
 
 <div class="adventure-label">
@@ -2058,12 +2661,18 @@ Pirate Adventure
 <span>♪</span>
 </div>
 
-</article>
+</div>
+</div>
 
 
-<article
+<!-- PUMPKIN -->
+
+<div class="adventure-block">
+
+<div
   class="adventure-card"
   data-interactive-media
+  data-media-name="Pumpkin Hollow"
 >
 
 <div class="adventure-label">
@@ -2084,12 +2693,18 @@ Pumpkin Hollow
 <span>♪</span>
 </div>
 
-</article>
+</div>
+</div>
 
 
-<article
+<!-- CHRISTMAS -->
+
+<div class="adventure-block">
+
+<div
   class="adventure-card"
   data-interactive-media
+  data-media-name="Santa's Workshop"
 >
 
 <div class="adventure-label">
@@ -2110,7 +2725,15 @@ Santa's Workshop
 <span>♪</span>
 </div>
 
-</article>
+</div>
+</div>
+
+
+<p class="adventure-copy">
+Each Adventure can grow with new locations,
+characters, activities, stories and discoveries.
+Not separate games. One expanding universe.
+</p>
 
 
 </div>
@@ -2119,7 +2742,7 @@ Santa's Workshop
 
 
 <!-- ======================================================
-     ABOUT
+     PAGE 3 — ABOUT
      ====================================================== -->
 
 <section
@@ -2129,12 +2752,20 @@ Santa's Workshop
 
 <div class="page-inner about-page">
 
+<header class="section-heading">
+
+<p class="kicker">
+Behind the world
+</p>
+
 <h2 class="page-title">
 About the Project
 </h2>
 
+</header>
 
-<div class="about-characters">
+
+<div class="about-hero">
 
 <img
   class="about-diana"
@@ -2151,32 +2782,210 @@ About the Project
 </div>
 
 
-<!-- Final project information will be added here
-     after the content is approved. -->
+<div class="story-grid">
+
+
+<article class="story-card">
+
+<h3>
+A World That Feels Alive
+</h3>
+
+<p>
+Tiny Explorers is designed around a Living World.
+Characters can have routines. Weather can change
+what happens. Objects can react to the child and
+each other. Activities can appear naturally during
+play, and choices and discoveries can become
+memories.
+<br><br>
+The goal isn't simply more content. It's a world
+that responds.
+</p>
+
+</article>
+
+
+<article class="story-card">
+
+<h3>
+Grows With the Child
+</h3>
+
+<p>
+Tiny Explorers begins with simple, visual,
+audio-led play that doesn't depend on a child
+being able to read.
+<br><br>
+As the child grows, the world can grow too:
+new activities, new stories, new responsibilities,
+new discoveries and new Adventures.
+<br><br>
+The child doesn't have to leave one game behind
+and begin another. Their world expands with them.
+</p>
+
+</article>
+
+
+<article class="story-card">
+
+<h3>
+Explorer + Buddy
+</h3>
+
+<p>
+Every child has an Explorer and a Buddy who
+become part of their world.
+<br><br>
+Buddy isn't simply decoration. Buddy can explore
+alongside the child, react to experiences,
+participate in activities and share memories as
+the world grows.
+<br><br>
+It's their adventure together.
+</p>
+
+</article>
+
+
+<article class="story-card">
+
+<h3>
+Stories That Come Alive
+</h3>
+
+<p>
+At the Little Town library, choosing a book can
+become more than reading.
+<br><br>
+The library transforms into a little theater where
+the story plays out in front of the child.
+New books can mean new characters, stories and
+experiences—all without leaving Tiny Explorers.
+</p>
+
+</article>
+
+</div>
+
+
+<div class="project-statement">
+
+<p class="kicker">
+The project
+</p>
+
+<p>
+Tiny Explorers is a substantially developed
+children's digital-play property with an existing
+software foundation, defined systems, world
+architecture, gameplay design, content, and
+extensive production documentation.
+</p>
+
+<blockquote>
+Give children a world they can belong to—not
+simply another game to finish.
+</blockquote>
+
+</div>
 
 
 <section class="parents-section">
 
-<h2 class="page-title">
+<header class="section-heading">
+
+<p class="kicker">
+Real conversations
+</p>
+
+<h2>
 What Parents Are Asking For
 </h2>
 
-<!--
-Parent screenshots will be added after their final
-repository filenames are established.
--->
+<p class="parents-copy">
+The questions behind Tiny Explorers are already
+being asked by parents: how children spend their
+screen time, what they encounter there, what they
+learn, and whether digital play can become
+something more meaningful.
+</p>
+
+</header>
+
+<div class="parent-note">
+The parent conversations collected for this
+section will be shown in their original context
+with links to the original discussions.
+</div>
 
 </section>
-
 
 </div>
 </section>
 
-
 </main>
 
 
+<footer class="footer">
+Tiny Explorers
+</footer>
+
+
 <script>
+
+/* =========================================================
+   TINY EXPLORERS — SITE BEHAVIOR
+   ========================================================= */
+
+
+/* =========================================================
+   SIMPLE EVENT TRACKING LAYER
+
+   Everything important calls trackEvent().
+   This means we can plug in GoatCounter or another
+   analytics provider later without rewriting the site.
+   ========================================================= */
+
+function trackEvent(name, detail = "") {
+
+  /*
+    GoatCounter custom-event support.
+    It activates automatically if GoatCounter is
+    connected later.
+  */
+
+  if (
+    window.goatcounter &&
+    typeof window.goatcounter.count === "function"
+  ) {
+
+    window.goatcounter.count({
+      path:
+        "event/" +
+        name +
+        (
+          detail
+          ? "/" + encodeURIComponent(detail)
+          : ""
+        ),
+
+      title:
+        name +
+        (
+          detail
+          ? " — " + detail
+          : ""
+        ),
+
+      event:true
+    });
+
+  }
+
+}
+
 
 /* =========================================================
    PAGE NAVIGATION
@@ -2186,12 +2995,10 @@ const pages =
   document.querySelectorAll("[data-page]");
 
 const pageLinks =
-  document.querySelectorAll(
-    "[data-page-link]"
-  );
+  document.querySelectorAll("[data-page-link]");
 
 
-function showPage(name) {
+function showPage(name, shouldTrack = true) {
 
   stopAllMedia();
 
@@ -2234,6 +3041,11 @@ function showPage(name) {
     behavior:"smooth"
   });
 
+
+  if(shouldTrack) {
+    trackEvent("page_view", name);
+  }
+
 }
 
 
@@ -2255,9 +3067,9 @@ pageLinks.forEach(link => {
 
 /* =========================================================
    MEDIA
-   Only one video may play at a time.
-   Desktop = hover.
-   Touch devices = tap.
+   Desktop: hover to play with sound.
+   Touch: tap.
+   Only one video plays at a time.
    ========================================================= */
 
 const mediaContainers =
@@ -2265,13 +3077,10 @@ const mediaContainers =
     "[data-interactive-media]"
   );
 
-
 let activeVideo = null;
 
 
-function stopAllMedia(
-  except = null
-) {
+function stopAllMedia(except = null) {
 
   document
     .querySelectorAll("video")
@@ -2280,7 +3089,6 @@ function stopAllMedia(
       if(video !== except) {
 
         video.pause();
-
         video.muted = true;
 
         const container =
@@ -2306,9 +3114,7 @@ function stopAllMedia(
 }
 
 
-async function playMedia(
-  container
-) {
+async function playMedia(container) {
 
   const video =
     container.querySelector("video");
@@ -2322,8 +3128,12 @@ async function playMedia(
 
   video.muted = false;
 
-  container.classList.add(
-    "playing"
+  container.classList.add("playing");
+
+
+  trackEvent(
+    "media_play",
+    container.dataset.mediaName || "video"
   );
 
 
@@ -2334,8 +3144,9 @@ async function playMedia(
   } catch(error) {
 
     /*
-      Some browsers require a click/tap
-      before allowing sound.
+      Browser may reject audio from hover.
+      Keep video functional and allow the
+      visitor's click/tap to unlock audio.
     */
 
     video.muted = true;
@@ -2349,9 +3160,7 @@ async function playMedia(
 }
 
 
-function pauseMedia(
-  container
-) {
+function pauseMedia(container) {
 
   const video =
     container.querySelector("video");
@@ -2359,12 +3168,9 @@ function pauseMedia(
   if(!video) return;
 
   video.pause();
-
   video.muted = true;
 
-  container.classList.remove(
-    "playing"
-  );
+  container.classList.remove("playing");
 
   if(activeVideo === video) {
     activeVideo = null;
@@ -2379,76 +3185,70 @@ const canHover =
   ).matches;
 
 
-mediaContainers.forEach(
-  container => {
+mediaContainers.forEach(container => {
 
-    if(canHover) {
-
-      container.addEventListener(
-        "mouseenter",
-        () => playMedia(container)
-      );
-
-      container.addEventListener(
-        "mouseleave",
-        () => pauseMedia(container)
-      );
-
-    }
-
+  if(canHover) {
 
     container.addEventListener(
-      "click",
-      event => {
+      "mouseenter",
+      () => playMedia(container)
+    );
 
-        /*
-          On desktop the click also works
-          as a fallback for browsers that
-          block hover-triggered audio.
-        */
-
-        const video =
-          container.querySelector("video");
-
-        if(
-          video &&
-          !video.paused &&
-          !video.muted
-        ) {
-
-          if(!canHover) {
-            pauseMedia(container);
-          }
-
-          return;
-        }
-
-
-        playMedia(container);
-
-      }
+    container.addEventListener(
+      "mouseleave",
+      () => pauseMedia(container)
     );
 
   }
-);
+
+
+  container.addEventListener(
+    "click",
+    () => {
+
+      const video =
+        container.querySelector("video");
+
+      if(!video) return;
+
+
+      if(
+        !canHover &&
+        !video.paused &&
+        !video.muted
+      ) {
+
+        pauseMedia(container);
+        return;
+
+      }
+
+
+      /*
+        Desktop click also acts as the explicit
+        audio permission if hover playback was
+        forced muted by the browser.
+      */
+
+      playMedia(container);
+
+    }
+  );
+
+});
 
 
 /* =========================================================
    TWO-PART HERO VIDEO
-   Treat Promo_Video_01 + 02 as one sequence.
    ========================================================= */
 
 const heroVideo =
-  document.getElementById(
-    "heroVideo"
-  );
-
+  document.getElementById("heroVideo");
 
 const heroParts = [
   "Promo_Video_01.mp4",
   "Promo_Video_02.mp4"
 ];
-
 
 let heroPartIndex = 0;
 
@@ -2465,45 +3265,16 @@ heroVideo.addEventListener(
     heroVideo.src =
       heroParts[heroPartIndex];
 
-
     heroVideo.load();
 
 
-    if(
-      activeVideo === heroVideo
-    ) {
+    if(activeVideo === heroVideo) {
 
       heroVideo.muted = false;
 
       try {
         await heroVideo.play();
       } catch(error) {}
-    }
-
-  }
-);
-
-
-/*
-Reset hero to Part 1 after it has
-been left for a while so a new visitor
-interaction starts naturally.
-*/
-
-heroVideo.addEventListener(
-  "pause",
-  () => {
-
-    if(
-      activeVideo !== heroVideo
-    ) {
-
-      heroPartIndex = 0;
-
-      heroVideo.src =
-        heroParts[0];
-
-      heroVideo.load();
 
     }
 
@@ -2513,7 +3284,6 @@ heroVideo.addEventListener(
 
 /* =========================================================
    TALK TO DIANA
-   Two example session responses per question.
    ========================================================= */
 
 const dianaResponses = {
@@ -2570,106 +3340,173 @@ const questionButtons =
     "[data-question]"
   );
 
-
 const speechBubble =
   document.getElementById(
     "speechBubble"
   );
-
 
 const dianaAnswer =
   document.getElementById(
     "dianaAnswer"
   );
 
-
 const lastResponse = {};
 
 
-questionButtons.forEach(
-  button => {
+questionButtons.forEach(button => {
 
-    button.addEventListener(
-      "click",
-      () => {
+  button.addEventListener(
+    "click",
+    () => {
 
-        const question =
-          button.dataset.question;
+      const question =
+        button.dataset.question;
 
-        const answers =
-          dianaResponses[question];
+      const answers =
+        dianaResponses[question];
 
-
-        /*
-          With two answers, deliberately
-          alternate after the first random
-          selection so repeat clicks always
-          reveal something different.
-        */
-
-        let index;
-
-        if(
-          lastResponse[question]
-          === undefined
-        ) {
-
-          index =
-            Math.floor(
-              Math.random()
-              * answers.length
-            );
-
-        } else {
-
-          index =
-            (
-              lastResponse[question]
-              + 1
-            )
-            % answers.length;
-
-        }
+      let index;
 
 
-        lastResponse[question] =
-          index;
+      if(
+        lastResponse[question]
+        === undefined
+      ) {
 
-
-        questionButtons
-          .forEach(item =>
-            item.classList.remove(
-              "active"
-            )
+        index =
+          Math.floor(
+            Math.random()
+            * answers.length
           );
 
+      } else {
 
-        button.classList.add(
-          "active"
-        );
-
-
-        speechBubble.classList.add(
-          "changing"
-        );
-
-
-        setTimeout(
-          () => {
-
-            dianaAnswer.textContent =
-              answers[index];
-
-            speechBubble
-              .classList.remove(
-                "changing"
-              );
-
-          },
-          150
-        );
+        index =
+          (
+            lastResponse[question]
+            + 1
+          )
+          % answers.length;
 
       }
+
+
+      lastResponse[question] = index;
+
+
+      questionButtons.forEach(item => {
+        item.classList.remove("active");
+      });
+
+
+      button.classList.add("active");
+
+      speechBubble.classList.add(
+        "changing"
+      );
+
+
+      setTimeout(
+        () => {
+
+          dianaAnswer.textContent =
+            answers[index];
+
+          speechBubble.classList.remove(
+            "changing"
+          );
+
+        },
+        150
+      );
+
+
+      trackEvent(
+        "diana_question",
+        question
+      );
+
+    }
+  );
+
+});
+
+
+/* =========================================================
+   PARENT / OTHER
+   ========================================================= */
+
+const audienceButtons =
+  document.querySelectorAll(
+    "[data-audience]"
+  );
+
+const visitorType =
+  document.getElementById(
+    "visitorType"
+  );
+
+const formSubject =
+  document.getElementById(
+    "formSubject"
+  );
+
+
+audienceButtons.forEach(button => {
+
+  button.addEventListener(
+    "click",
+    () => {
+
+      audienceButtons.forEach(item => {
+        item.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+
+      const audience =
+        button.dataset.audience;
+
+
+      visitorType.value =
+        audience;
+
+
+      formSubject.value =
+        "Tiny Explorers — " +
+        audience +
+        " Comment";
+
+
+      trackEvent(
+        "audience_selected",
+        audience
+      );
+
+    }
+  );
+
+});
+
+
+/* =========================================================
+   COMMENT SUBMISSION TRACKING
+   ========================================================= */
+
+const commentForm =
+  document.getElementById(
+    "commentForm"
+  );
+
+
+commentForm.addEventListener(
+  "submit",
+  () => {
+
+    trackEvent(
+      "comment_submitted",
+      visitorType.value
     );
 
   }
@@ -2677,7 +3514,7 @@ questionButtons.forEach(
 
 
 /* =========================================================
-   INITIAL URL
+   INITIAL PAGE
    ========================================================= */
 
 const hash =
@@ -2686,90 +3523,26 @@ const hash =
 
 if(hash === "#explore") {
 
-  showPage("explore");
+  showPage(
+    "explore",
+    false
+  );
 
 } else if(hash === "#about") {
 
-  showPage("about");
+  showPage(
+    "about",
+    false
+  );
 
 } else {
 
-  showPage("home");
-
-}
-
-
-/* =========================================================
-   TRACKING HOOKS
-   Analytics provider will be connected later.
-   ========================================================= */
-
-function trackTinyExplorersEvent(
-  eventName,
-  data = {}
-) {
-
-  /*
-    Intentionally provider-neutral.
-    We will connect the final analytics
-    service before launch.
-  */
-
-  console.log(
-    "[Tiny Explorers]",
-    eventName,
-    data
+  showPage(
+    "home",
+    false
   );
 
 }
-
-
-questionButtons.forEach(
-  button => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        trackTinyExplorersEvent(
-          "diana_question",
-          {
-            question:
-              button.dataset.question
-          }
-        );
-
-      }
-    );
-
-  }
-);
-
-
-document
-  .querySelectorAll(
-    "[data-contact]"
-  )
-  .forEach(
-    button => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          trackTinyExplorersEvent(
-            "contact_interest",
-            {
-              type:
-                button.dataset.contact
-            }
-          );
-
-        }
-      );
-
-    }
-  );
 
 </script>
 
