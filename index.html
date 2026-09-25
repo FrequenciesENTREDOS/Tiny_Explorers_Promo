@@ -547,15 +547,18 @@ a {
   width:100%;
   aspect-ratio:16/9;
 
-  object-fit:cover;
+  object-fit: cover;
 
   border-radius:26px;
 
   background:#2d2539;
 }
 
+.adventure-video {
+  object-fit: contain;
+}
 .media-hint {
-  position:absolute;
+  position: absolute;
   z-index:7;
 
   left:50%;
@@ -563,8 +566,8 @@ a {
 
   translate:-50% 0;
 
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   gap:8px;
 
   padding:10px 16px;
@@ -593,10 +596,10 @@ a {
 }
 
 .hero-character {
-  position:absolute;
+  position: absolute;
   z-index:10;
 
-  pointer-events:none;
+  pointer-events: none;
 
   filter:
     drop-shadow(
@@ -653,9 +656,9 @@ a {
 
 .intro-card {
   max-width:1000px;
-  margin:auto;
+  margin: auto;
 
-  text-align:center;
+  text-align: center;
 
   padding:
     48px clamp(24px,6vw,75px);
@@ -697,8 +700,8 @@ a {
 }
 
 .talk-world {
-  position:relative;
-  overflow:hidden;
+  position: relative;
+  overflow: hidden;
 
   min-height:620px;
 
@@ -727,10 +730,10 @@ a {
   box-shadow:var(--shadow);
 }
 
-.talk-world:before,
+.talk-world: before,
 .talk-world:after {
   content:"";
-  position:absolute;
+  position: absolute;
   border-radius:50%;
   background:rgba(255,255,255,.24);
 }
@@ -750,33 +753,33 @@ a {
 }
 
 .talk-layout {
-  position:relative;
+  position: relative;
   z-index:2;
 
-  display:grid;
+  display: grid;
 
   grid-template-columns:
     minmax(260px,.7fr)
     minmax(420px,1.3fr);
 
-  align-items:center;
+  align-items: center;
 
   gap:45px;
 }
 
 .diana-stage {
-  position:relative;
+  position: relative;
 
   min-height:410px;
 
-  display:flex;
+  display: flex;
   align-items:flex-end;
-  justify-content:center;
+  justify-content: center;
 }
 
 .talk-diana {
   width:min(300px,78%);
-  position:relative;
+  position: relative;
   z-index:2;
 
   filter:
@@ -791,7 +794,7 @@ a {
 }
 
 .talk-buddy {
-  position:absolute;
+  position: absolute;
   z-index:3;
 
   width:120px;
@@ -807,7 +810,7 @@ a {
 }
 
 .character-shadow {
-  position:absolute;
+  position: absolute;
   bottom:7px;
 
   width:72%;
@@ -822,13 +825,13 @@ a {
 }
 
 .conversation {
-  display:grid;
+  display: grid;
   gap:22px;
 }
 
 .question-buttons {
-  display:flex;
-  flex-wrap:wrap;
+  display: flex;
+  flex-wrap: wrap;
   gap:10px;
 }
 
@@ -850,7 +853,7 @@ a {
     inset 0 1px white;
 
   font-weight:900;
-  cursor:pointer;
+  cursor: pointer;
 
   transition:.18s ease;
 }
@@ -875,7 +878,7 @@ a {
   background:#e1d7ff;
 }
 
-.question-button:hover,
+.question-button: hover,
 .question-button.active {
   transform:
     translateY(-4px)
@@ -887,12 +890,12 @@ a {
 }
 
 .speech-bubble {
-  position:relative;
+  position: relative;
 
   min-height:220px;
 
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
 
   padding:30px 34px;
 
@@ -921,7 +924,7 @@ a {
 .speech-bubble:before {
   content:"";
 
-  position:absolute;
+  position: absolute;
 
   left:-18px;
   bottom:25px;
@@ -949,7 +952,7 @@ a {
 }
 
 .diana-name {
-  position:absolute;
+  position: absolute;
 
   top:-13px;
   left:28px;
@@ -965,7 +968,7 @@ a {
       #e97aac
     );
 
-  color:white;
+  color: white;
 
   font-size:.82rem;
   font-weight:900;
@@ -984,14 +987,14 @@ a {
 }
 
 .offscreen-card {
-  display:grid;
+  display: grid;
 
   grid-template-columns:
     .85fr 1.15fr;
 
   gap:38px;
 
-  align-items:center;
+  align-items: center;
 
   padding:
     48px clamp(24px,5vw,65px);
@@ -1031,7 +1034,7 @@ a {
 }
 
 .real-world-actions {
-  display:grid;
+  display: grid;
 
   grid-template-columns:
     repeat(2,1fr);
@@ -1042,8 +1045,8 @@ a {
 .action-card {
   min-height:95px;
 
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
 
   padding:18px;
 
@@ -1084,11 +1087,11 @@ a {
 }
 
 .comments-card {
-  position:relative;
-  overflow:hidden;
+  position: relative;
+  overflow: hidden;
 
   max-width:1050px;
-  margin:auto;
+  margin: auto;
 
   padding:
     48px clamp(22px,6vw,70px);
@@ -1107,7 +1110,7 @@ a {
 .comments-card:after {
   content:"";
 
-  position:absolute;
+  position: absolute;
 
   width:260px;
   height:260px;
@@ -1120,11 +1123,11 @@ a {
   background:
     rgba(243,142,183,.12);
 
-  pointer-events:none;
+  pointer-events: none;
 }
 
 .comments-title {
-  text-align:center;
+  text-align: center;
   margin-bottom:28px;
 }
 
@@ -1149,8 +1152,8 @@ a {
 }
 
 .audience-choice {
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
 
   gap:10px;
 
@@ -1171,7 +1174,7 @@ a {
   color:var(--ink);
 
   font-weight:900;
-  cursor:pointer;
+  cursor: pointer;
 
   transition:.18s ease;
 }
@@ -1191,11 +1194,11 @@ a {
 
 .comment-form {
   max-width:720px;
-  margin:auto;
+  margin: auto;
 }
 
 .form-row {
-  display:grid;
+  display: grid;
 
   grid-template-columns:
     repeat(2,1fr);
@@ -1208,7 +1211,7 @@ a {
 }
 
 .field label {
-  display:block;
+  display: block;
 
   margin:
     0 0 6px 4px;
@@ -1226,7 +1229,7 @@ a {
   border:
     1px solid rgba(79,61,104,.11);
 
-  outline:none;
+  outline: none;
 
   padding:14px 16px;
 
@@ -1246,15 +1249,15 @@ a {
 
 .field textarea {
   min-height:130px;
-  resize:vertical;
+  resize: vertical;
 }
 
-.field input:focus,
-.field textarea:focus {
+.field input: focus,
+.field textarea: focus {
   border-color:
     rgba(101,80,166,.38);
 
-  background:white;
+  background: white;
 
   box-shadow:
     0 0 0 4px
@@ -1270,7 +1273,7 @@ a {
 
   border-radius:999px;
 
-  color:white;
+  color: white;
 
   background:
     linear-gradient(
@@ -1280,7 +1283,7 @@ a {
     );
 
   font-weight:900;
-  cursor:pointer;
+  cursor: pointer;
 
   box-shadow:
     0 10px 22px
@@ -1300,7 +1303,7 @@ a {
 .form-note {
   margin:12px 0 0;
 
-  text-align:center;
+  text-align: center;
 
   color:#8a8292;
 
@@ -1320,7 +1323,7 @@ a {
 
   margin:18px auto 55px;
 
-  text-align:center;
+  text-align: center;
 
   color:var(--soft);
 
@@ -1329,18 +1332,18 @@ a {
 }
 
 .explore-stream {
-  display:grid;
+  display: grid;
   gap:68px;
 }
 
 .adventure-block {
   max-width:1120px;
-  margin:auto;
+  margin: auto;
   width:100%;
 }
 
 .adventure-card {
-  position:relative;
+  position: relative;
 
   padding:10px;
 
@@ -1388,7 +1391,7 @@ a {
 }
 
 .adventure-label {
-  position:absolute;
+  position: absolute;
   z-index:6;
 
   top:-17px;
@@ -1414,7 +1417,7 @@ a {
 
   margin:22px auto 0;
 
-  text-align:center;
+  text-align: center;
 
   color:var(--soft);
 
@@ -1448,16 +1451,16 @@ a {
 }
 
 .about-hero {
-  position:relative;
-  overflow:hidden;
+  position: relative;
+  overflow: hidden;
 
   min-height:390px;
 
   margin-top:40px;
 
-  display:flex;
+  display: flex;
   align-items:flex-end;
-  justify-content:center;
+  justify-content: center;
 
   border-radius:44px;
 
